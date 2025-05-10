@@ -17,5 +17,5 @@ A full-stack internal service desk solution built for Power Grid Corporation of 
 Improve internal IT service desk efficiency by centralizing and automating support workflows.
 
 
-![PowerGrid Logo](logo.png)
+![PowerGrid Logo](Screenshot%202025-05-11%20024115.png)
 
