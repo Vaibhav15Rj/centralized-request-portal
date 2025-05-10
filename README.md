@@ -15,3 +15,7 @@ A full-stack internal service desk solution built for Power Grid Corporation of 
 
 ## Purpose
 Improve internal IT service desk efficiency by centralizing and automating support workflows.
+
+
+![PowerGrid Logo](logo.png)
+
