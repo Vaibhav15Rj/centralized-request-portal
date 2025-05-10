@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meeting Dashboard</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; display: flex; }
+    .sidebar {
+      width: 220px;
+      background-color: #f8f9fa;
+      padding: 20px;
+      height: 100vh;
+      border-right: 1px solid #ddd;
+    }
+    .sidebar img { max-width: 100%; margin-bottom: 30px; }
+    .sidebar ul { list-style: none; padding-left: 0; }
+    .sidebar ul li {
+      margin: 15px 0;
+      font-size: 16px;
+      cursor: pointer;
+      color: #333;
+    }
+    .sidebar ul li:hover { text-decoration: underline; }
+    .sidebar ul li i { margin-right: 8px; }
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+    .dashboard-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .dashboard-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      flex: 1;
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+      background-color: #fef9c3;
+    }
+    .stat-card:nth-child(2) { background-color: #dbeafe; }
+    .stat-card:nth-child(3) { background-color: #dcfce7; }
+    .meeting-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .meeting-table th, .meeting-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .meeting-table th { background-color: #f4f4f4; }
+    .btn-green {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+    .btn-green:hover { background-color: #218838; }
+    .action-link {
+      color: #5a2ea6;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="logo.png" alt="PowerGrid Logo">
+    <ul>
+      <li onclick="window.location.href='dashboard.html'"><i>📊</i>Dashboard</li>
+      <li onclick="window.location.href='index.html'"><i>🔓</i>Log Out</li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="dashboard-title">Meeting Dashboard</div>
+    <div class="dashboard-subtitle">Manage and track Powergrid meetings</div>
+
+    <div class="stats">
+      <div class="stat-card"><strong>Upcoming Meetings</strong><br><h2>5</h2></div>
+      <div class="stat-card"><strong>In Progress</strong><br><h2>6</h2></div>
+      <div class="stat-card"><strong>Completed</strong><br><h2>14</h2></div>
+    </div>
+
+    <h3>Recent Meetings</h3>
+    <button class="btn-green">Create New Meeting</button>
+
+    <table class="meeting-table">
+      <thead>
+        <tr>
+          <th>Meeting Title</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th>Duration</th>
+          <th>Attendees</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample 25 entries -->
+        <tr><td>Annual Review</td><td>2025-04-25</td><td>Conference Room A</td><td>Management</td><td>Upcoming</td><td>2 hours</td><td>15</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Project Planning</td><td>2025-04-22</td><td>Virtual</td><td>Engineering</td><td>In Progress</td><td>1 hour</td><td>8</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Security Briefing</td><td>2025-04-20</td><td>Board Room</td><td>Cybersecurity</td><td>Completed</td><td>1.5 hours</td><td>20</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Vendor Onboarding</td><td>2025-04-18</td><td>Virtual</td><td>Procurement</td><td>Completed</td><td>2 hours</td><td>10</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Infra Audit Prep</td><td>2025-04-26</td><td>IT HQ</td><td>Infrastructure</td><td>Upcoming</td><td>3 hours</td><td>18</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Compliance Check</td><td>2025-04-19</td><td>Meeting Room 3</td><td>Legal</td><td>Completed</td><td>1 hour</td><td>6</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Policy Review</td><td>2025-04-23</td><td>Virtual</td><td>HR</td><td>In Progress</td><td>1.5 hours</td><td>12</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Website Upgrade</td><td>2025-04-27</td><td>Lab A</td><td>IT Development</td><td>Upcoming</td><td>2.5 hours</td><td>7</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Internal Training</td><td>2025-04-15</td><td>Training Hall</td><td>IT Support</td><td>Completed</td><td>3 hours</td><td>22</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Performance Review</td><td>2025-04-28</td><td>Room 12</td><td>HR</td><td>Upcoming</td><td>1 hour</td><td>9</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Cloud Migration</td><td>2025-04-16</td><td>Zoom</td><td>IT Infrastructure</td><td>Completed</td><td>2 hours</td><td>14</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Quarterly Review</td><td>2025-04-13</td><td>Board Room</td><td>Finance</td><td>Completed</td><td>3 hours</td><td>11</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>New Policy Drafting</td><td>2025-04-30</td><td>Virtual</td><td>Legal</td><td>Upcoming</td><td>2 hours</td><td>10</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Database Backup</td><td>2025-04-17</td><td>Data Center</td><td>IT Ops</td><td>In Progress</td><td>1 hour</td><td>4</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Board Meeting</td><td>2025-04-29</td><td>Board Room</td><td>Executive</td><td>Upcoming</td><td>4 hours</td><td>20</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Bug Review</td><td>2025-04-24</td><td>Virtual</td><td>QA</td><td>In Progress</td><td>1 hour</td><td>5</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Energy Audit</td><td>2025-04-11</td><td>HQ</td><td>Energy</td><td>Completed</td><td>3 hours</td><td>6</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Recruitment Plan</td><td>2025-04-21</td><td>Virtual</td><td>HR</td><td>In Progress</td><td>2 hours</td><td>13</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>CRM Demo</td><td>2025-04-12</td><td>Room 22</td><td>Sales</td><td>Completed</td><td>1 hour</td><td>10</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Security SOP</td><td>2025-04-09</td><td>IT Zone</td><td>Security</td><td>Completed</td><td>1 hour</td><td>8</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Logistics Review</td><td>2025-04-10</td><td>Warehouse</td><td>Logistics</td><td>Completed</td><td>1.5 hours</td><td>5</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Marketing Strategy</td><td>2025-04-08</td><td>Virtual</td><td>Marketing</td><td>Completed</td><td>2 hours</td><td>9</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Team Sync</td><td>2025-04-07</td><td>Zoom</td><td>Cross-Functional</td><td>Completed</td><td>1 hour</td><td>12</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Customer Feedback</td><td>2025-04-06</td><td>Virtual</td><td>Support</td><td>Completed</td><td>1.5 hours</td><td>7</td><td><span class="action-link">View Details</span></td></tr>
+        <tr><td>Roadmap Discussion</td><td>2025-04-05</td><td>Conference B</td><td>Product</td><td>Completed</td><td>2 hours</td><td>10</td><td><span class="action-link">View Details</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

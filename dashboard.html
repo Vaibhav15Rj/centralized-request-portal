@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - PowerGrid Portal</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { display: flex; min-height: 100vh; background: #f9f9f9; }
+    .sidebar {
+      width: 240px;
+      background-color: #fff;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+    .sidebar img {
+      width: 100%;
+      max-width: 200px;
+      margin-bottom: 30px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+    }
+    .sidebar ul li.logout {
+      margin-top: 30px;
+      color: grey;
+    }
+    .sidebar ul li.logout:hover {
+      text-decoration: underline;
+    }
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar h1 {
+      font-size: 24px;
+    }
+    .stats {
+      display: flex;
+      gap: 30px;
+      margin: 30px 0;
+    }
+    .stat-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .task-table th, .task-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .task-table th {
+      background-color: #f4f4f4;
+    }
+    .action-btn {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .whatsapp-icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <a href="#" onclick="loadDashboardClone()"><img src="logo.png" alt="PowerGrid Logo"></a>
+    <ul>
+      <li onclick="loadDashboardClone()">About Us</li>
+      <li onclick="loadTaskView(true)">Dashboard</li>
+      <li onclick="loadMeetingDashboard()">Meetings</li>
+      <li onclick="loadActivityTracker()">Activity Tracker</li>
+      <li onclick="loadReportSubmission()">Reports</li>
+      <li onclick="loadSettings()">Settings</li>
+      <li class="logout" onclick="logout()">Log Out</li>
+    </ul>
+  </div>
+
+  <div class="content" id="main-content">
+    <div class="topbar">
+      <h1>Pending Tasks</h1>
+      <button onclick="createTask()" style="padding: 10px 20px; background-color: #28A745; border: none; color: white; border-radius: 5px; cursor: pointer;">Create New Task</button>
+    </div>
+    <p style="margin-top: 10px; color: #555;">Manage and track tasks for power grid employees</p>
+
+    <div class="stats">
+      <div class="stat-box"><h3 style="color: #DC3545;">Overdue</h3><p id="count-overdue">0</p></div>
+      <div class="stat-box"><h3 style="color: #FFC107;">Pending</h3><p id="count-pending">0</p></div>
+      <div class="stat-box"><h3 style="color: #28A745;">Completed</h3><p id="count-completed">0</p></div>
+    </div>
+
+    <table class="task-table" id="taskTable">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Designation</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Remark</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="taskBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const statuses = ['pending', 'completed', 'overdue'];
+
+    function logout() {
+      window.location.href = 'index.html';
+    }
+
+    function createTask() {
+      const table = document.getElementById("taskBody");
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td contenteditable="true">New Event</td>
+        <td contenteditable="true">Apr 30, 2024</td>
+        <td contenteditable="true">New Designation</td>
+        <td contenteditable="true">New Department</td>
+        <td>
+          <select onchange="updateStatusCount()">
+            <option value="pending" selected>Pending</option>
+            <option value="completed">Completed</option>
+            <option value="overdue">Overdue</option>
+          </select>
+        </td>
+        <td contenteditable="true">Apr 30, 2024</td>
+        <td contenteditable="true">Remark</td>
+        <td>
+          <span class="action-btn" onclick="deleteTask(this)">🗑️</span>
+          <img src="https://cdn-icons-png.freepik.com/256/15707/15707917.png?semt=ais_hybrid" alt="WhatsApp" class="whatsapp-icon">
+        </td>`;
+      table.appendChild(row);
+      updateStatusCount();
+    }
+
+    function deleteTask(btn) {
+      const row = btn.closest("tr");
+      row.remove();
+      updateStatusCount();
+    }
+
+    function updateStatusCount() {
+      const selects = document.querySelectorAll('#taskBody select');
+      let pending = 0, completed = 0, overdue = 0;
+      selects.forEach(sel => {
+        if (sel.value === 'pending') pending++;
+        else if (sel.value === 'completed') completed++;
+        else if (sel.value === 'overdue') overdue++;
+      });
+      document.getElementById("count-pending").textContent = pending;
+      document.getElementById("count-completed").textContent = completed;
+      document.getElementById("count-overdue").textContent = overdue;
+    }
+
+    function loadDashboardClone() {
+      window.location.href = 'dashboard-clone.html';
+    }
+
+    function loadTaskView(forceReload = false) {
+      if (forceReload) {
+        window.location.href = 'dashboard.html';
+      }
+    }
+
+    function loadMeetingDashboard() {
+      window.location.href = 'meeting-dashboard.html';
+    }
+
+    function loadActivityTracker() {
+      window.location.href = 'activity-tracker.html';
+    }
+
+    function loadReportSubmission() {
+      window.location.href = 'report-submission.html';
+    }
+
+    function loadSettings() {
+      window.location.href = 'settings.html';
+    }
+
+    function populateInitialTasks() {
+      const events = [
+        "Network Downtime", "Server Maintenance", "Firewall Update", "VPN Issues", "Email Outage",
+        "Software Upgrade", "Data Backup Check", "Router Replacement", "Access Issue", "Power Failure",
+        "Switch Upgrade", "Server Reboot", "Bandwidth Monitoring", "Patch Management", "Data Center Audit",
+        "System Health Check", "Disk Space Alert", "Antivirus Update", "User Account Lock", "File Access Review",
+        "Login Failure Spike", "Drive Encryption", "Policy Update", "Cloud Sync Issue", "Application Crash",
+        "Security Breach Test", "Database Optimization", "System Upgrade Plan", "Redundancy Testing", "Infrastructure Report"
+      ];
+      const designations = ["GM IT", "AGM IT", "DGM IT", "Deputy Manager IT", "Section Manager IT", "Manager IT", "Assistant Engineer IT", "Engineer IT"];
+      const remarks = ["Urgent", "Resolve in next week", "Due next month"];
+      const table = document.getElementById("taskBody");
+
+      for (let i = 0; i < 150; i++) {
+        const row = document.createElement("tr");
+        const status = statuses[i % 3];
+        row.innerHTML = `
+          <td contenteditable="true">${events[i % events.length]}</td>
+          <td contenteditable="true">2025-04-${(i % 30 + 2).toString().padStart(2, '0')}</td>
+          <td contenteditable="true">${designations[i % designations.length]}</td>
+          <td contenteditable="true">IT Networking</td>
+          <td>
+            <select onchange="updateStatusCount()">
+              <option value="pending" ${status === 'pending' ? 'selected' : ''}>Pending</option>
+              <option value="completed" ${status === 'completed' ? 'selected' : ''}>Completed</option>
+              <option value="overdue" ${status === 'overdue' ? 'selected' : ''}>Overdue</option>
+            </select>
+          </td>
+          <td contenteditable="true">2025-05-${(i % 30 + 2).toString().padStart(2, '0')}</td>
+          <td contenteditable="true">${remarks[i % remarks.length]}</td>
+          <td>
+            <span class="action-btn" onclick="deleteTask(this)">🗑️</span>
+            <img src="https://cdn-icons-png.freepik.com/256/15707/15707917.png?semt=ais_hybrid" alt="WhatsApp" class="whatsapp-icon">
+          </td>`;
+        table.appendChild(row);
+      }
+    }
+
+    window.onload = function () {
+      populateInitialTasks();
+      updateStatusCount();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Dashboard</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; display: flex; }
+    .sidebar {
+      width: 250px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      height: 100vh;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar h2 { font-size: 20px; margin-bottom: 20px; }
+    .sidebar ul { list-style: none; padding: 0; }
+    .sidebar ul li {
+      margin: 10px 0;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .sidebar button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .content {
+      flex: 1;
+      padding: 40px;
+      background-color: #f7f8fa;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 12px 0;
+      z-index: 1;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .dropdown-content div {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+    .dropdown-content div:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-btn {
+      background-color: #0d1b2a;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .reports-table {
+      margin-top: 40px;
+      background: white;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .reports-table th, .reports-table td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    .reports-table th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <h2>Report Submission</h2>
+      <ul>
+        <li onclick="window.location.href='dashboard.html'">Dashboard</li>
+      </ul>
+    </div>
+    <button onclick="window.location.href='index.html'">Log Out</button>
+  </div>
+
+  <div class="content">
+    <div class="top-bar">
+      <h1>Report Dashboard</h1>
+      <div class="dropdown">
+        <button class="dropdown-btn">⬆ Upload Report</button>
+        <div class="dropdown-content">
+          <div>Upload from PC</div>
+          <div>Upload from Cloud</div>
+          <div>Add from Link</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Recent Reports</h3>
+    <table class="reports-table">
+      <thead>
+        <tr>
+          <th>Report Title</th>
+          <th>Date</th>
+          <th>Department</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 30 hardcoded PowerGrid report entries -->
+        <tr><td>Substation Performance Report</td><td>2025-04-01</td><td>Transmission</td><td>Submitted</td></tr>
+        <tr><td>Monthly Load Forecast</td><td>2025-04-02</td><td>Planning</td><td>Pending Review</td></tr>
+        <tr><td>Energy Audit - North Region</td><td>2025-04-03</td><td>Audit</td><td>Approved</td></tr>
+        <tr><td>Grid Stability Metrics</td><td>2025-04-04</td><td>Operations</td><td>Submitted</td></tr>
+        <tr><td>Transformer Efficiency Study</td><td>2025-04-05</td><td>Technical</td><td>Submitted</td></tr>
+        <tr><td>Switchgear Fault Analysis</td><td>2025-04-06</td><td>Maintenance</td><td>Pending Review</td></tr>
+        <tr><td>Quarterly Compliance Report</td><td>2025-04-07</td><td>Legal</td><td>Submitted</td></tr>
+        <tr><td>Budget Allocation Overview</td><td>2025-04-08</td><td>Finance</td><td>Submitted</td></tr>
+        <tr><td>Renewable Integration Study</td><td>2025-04-09</td><td>Green Energy</td><td>Approved</td></tr>
+        <tr><td>Voltage Regulation Assessment</td><td>2025-04-10</td><td>Distribution</td><td>Submitted</td></tr>
+        <tr><td>Line Loss Calculation</td><td>2025-04-11</td><td>Technical</td><td>Pending Review</td></tr>
+        <tr><td>Smart Grid Implementation Plan</td><td>2025-04-12</td><td>Innovation</td><td>Submitted</td></tr>
+        <tr><td>Infrastructure Maintenance Plan</td><td>2025-04-13</td><td>Maintenance</td><td>Approved</td></tr>
+        <tr><td>Disaster Preparedness Review</td><td>2025-04-14</td><td>Safety</td><td>Submitted</td></tr>
+        <tr><td>SCADA System Uptime Report</td><td>2025-04-15</td><td>Automation</td><td>Submitted</td></tr>
+        <tr><td>Substation Inspection Summary</td><td>2025-04-16</td><td>Field Services</td><td>Submitted</td></tr>
+        <tr><td>Asset Management Overview</td><td>2025-04-17</td><td>Operations</td><td>Approved</td></tr>
+        <tr><td>Cybersecurity Risk Report</td><td>2025-04-18</td><td>IT Security</td><td>Pending Review</td></tr>
+        <tr><td>Load Shedding Data Summary</td><td>2025-04-19</td><td>Operations</td><td>Submitted</td></tr>
+        <tr><td>Energy Conservation Strategy</td><td>2025-04-20</td><td>Energy Management</td><td>Approved</td></tr>
+        <tr><td>Contractor Compliance Sheet</td><td>2025-04-21</td><td>Legal</td><td>Submitted</td></tr>
+        <tr><td>Transmission Fault Log</td><td>2025-04-22</td><td>Transmission</td><td>Submitted</td></tr>
+        <tr><td>Site Visit Summary - South Zone</td><td>2025-04-23</td><td>Field Operations</td><td>Submitted</td></tr>
+        <tr><td>Smart Meter Rollout Update</td><td>2025-04-24</td><td>Innovation</td><td>Submitted</td></tr>
+        <tr><td>Annual Equipment Inventory</td><td>2025-04-25</td><td>Procurement</td><td>Submitted</td></tr>
+        <tr><td>Relay Coordination Results</td><td>2025-04-26</td><td>Technical</td><td>Pending Review</td></tr>
+        <tr><td>Project Execution Tracker</td><td>2025-04-27</td><td>Projects</td><td>Approved</td></tr>
+        <tr><td>Training Session Feedback</td><td>2025-04-28</td><td>HR</td><td>Submitted</td></tr>
+        <tr><td>Line Expansion Blueprint</td><td>2025-04-29</td><td>Planning</td><td>Submitted</td></tr>
+        <tr><td>Weekly Work Log Summary</td><td>2025-04-30</td><td>Administration</td><td>Submitted</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

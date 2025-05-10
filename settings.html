@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - PowerGrid Portal</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { display: flex; min-height: 100vh; background: #f9f9f9; }
+    .sidebar {
+      width: 240px;
+      background-color: #fff;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+    .sidebar img {
+      width: 100%;
+      max-width: 200px;
+      margin-bottom: 30px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+    }
+    .sidebar ul li.logout {
+      margin-top: 30px;
+      color: grey;
+    }
+    .sidebar ul li.logout:hover {
+      text-decoration: underline;
+    }
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .setting-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+    }
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="logo.png" alt="PowerGrid Logo">
+    <ul>
+      <li onclick="window.location.href='dashboard-clone.html'">About Us</li>
+      <li onclick="window.location.href='dashboard.html'">Dashboard</li>
+      <li onclick="window.location.href='meeting-dashboard.html'">Meetings</li>
+      <li onclick="window.location.href='activity-tracker.html'">Activity Tracker</li>
+      <li onclick="window.location.href='report-submission.html'">Reports</li>
+      <li onclick="window.location.href='settings.html'">Settings</li>
+      <li class="logout" onclick="window.location.href='index.html'">Log Out</li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>Settings</h1>
+    <div class="setting-grid">
+      <div class="card">
+        <h2>↻ System Updates</h2>
+        <button>Check for Updates</button>
+      </div>
+      <div class="card">
+        <h2>☀ Report Issues</h2>
+        <button>Report a Bug</button>
+      </div>
+      <div class="card">
+        <h2>👥 Employee Access</h2>
+        <button>Manage Access</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

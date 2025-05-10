@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerGrid Portal</title>
+<style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f4f4; }
+    .login-container { text-align: center; width: 300px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .logo, .footer-img { margin-bottom: 20px; width: 100%; max-width: 280px; height: auto; } /* Adjusted size for both logo and footer image */
+    form { margin-top: 20px; }
+    input[type="text"], input[type="password"] {
+        width: calc(100% - 22px); /* Adjust width to match the button, accounting for padding and border */
+        margin-top: 10px; 
+        padding: 10px; 
+        border: 1px solid #ddd; 
+        border-radius: 5px;
+    }
+    button { 
+        width: 100%; 
+        padding: 10px; 
+        margin-top: 10px; 
+        border: none; 
+        border-radius: 5px; 
+        background-color: #007BFF; 
+        color: white; 
+        cursor: pointer; 
+    }
+    .footer { position: fixed; bottom: 10px; right: 10px; color: grey; }
+    .additional-images { text-align: center; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="login-container">
+    <img src="logo.png" alt="PowerGrid Logo" class="logo"> <!-- Update your image path -->
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <div class="additional-images">
+        <img src="footer.png" alt="Footer Image" class="footer-img"> <!-- Ensure this image fits within the container -->
+    </div>
+    <div class="footer">Powered by PowerGrid IT</div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        // Dummy credentials
+        if (username === "user" && password === "password") {
+            window.location.href = 'dashboard.html'; // Redirect to dashboard
+        } else {
+            alert('Invalid credentials!');
+        }
+    });
+</script>
+</body>
+</html>

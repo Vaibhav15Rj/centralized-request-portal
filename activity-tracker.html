@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Activity Tracker</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; display: flex; }
+    .sidebar {
+      width: 220px;
+      background-color: #f8f9fa;
+      padding: 20px;
+      height: 100vh;
+      border-right: 1px solid #ddd;
+    }
+    .sidebar img { max-width: 100%; margin-bottom: 30px; }
+    .sidebar ul { list-style: none; padding-left: 0; }
+    .sidebar ul li {
+      margin: 15px 0;
+      font-size: 16px;
+      cursor: pointer;
+      color: #333;
+    }
+    .sidebar ul li:hover { text-decoration: underline; }
+    .sidebar ul li i { margin-right: 8px; }
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+    .dashboard-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .dashboard-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      flex: 1;
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+      background-color: #dcfce7;
+    }
+    .stat-card:nth-child(2) { background-color: #dbeafe; }
+    .stat-card:nth-child(3) { background-color: #fef9c3; }
+    .activity-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .activity-table th, .activity-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .activity-table th { background-color: #f4f4f4; }
+    .btn-green {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+    .btn-green:hover { background-color: #218838; }
+    .trend-up { color: green; }
+    .trend-down { color: red; }
+    .trend-flat { color: purple; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="logo.png" alt="PowerGrid Logo">
+    <ul>
+      <li onclick="window.location.href='dashboard.html'"><i>📊</i>Dashboard</li>
+      <li onclick="window.location.href='index.html'"><i>🔓</i>Log Out</li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="dashboard-title">Activity Dashboard</div>
+    <div class="dashboard-subtitle">Manage and track Powergrid activities</div>
+
+    <div class="stats">
+      <div class="stat-card"><strong>Total Activities</strong><br><h2>50</h2></div>
+      <div class="stat-card"><strong>Active Time</strong><br><h2>21</h2></div>
+      <div class="stat-card"><strong>Performance</strong><br><h2>18</h2></div>
+    </div>
+
+    <h3>Recent Activities</h3>
+    <button class="btn-green">Log New Activity</button>
+
+    <table class="activity-table">
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Duration</th>
+          <th>Details</th>
+          <th>Trend</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 50 hardcoded activities related to PowerGrid -->
+        <tr><td>Transformer Inspection</td><td>45 mins</td><td>Substation A</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Line Patrolling</td><td>90 mins</td><td>220kV Corridor</td><td class="trend-flat">~</td></tr>
+        <tr><td>Fault Analysis Drill</td><td>60 mins</td><td>Grid South Division</td><td class="trend-down">⬇</td></tr>
+        <tr><td>SCADA System Check</td><td>40 mins</td><td>Control Room</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Battery Bank Maintenance</td><td>30 mins</td><td>Station UPS</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Substation Earthing Test</td><td>35 mins</td><td>Zone 3</td><td class="trend-flat">~</td></tr>
+        <tr><td>HV Cable Inspection</td><td>55 mins</td><td>Line 3A</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Oil Filtration</td><td>75 mins</td><td>Transformer T5</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Relay Testing</td><td>60 mins</td><td>Protection Panel</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Breaker Timing Test</td><td>50 mins</td><td>Bay 12</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Thermal Scanning</td><td>45 mins</td><td>Live Busbars</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Fire Safety Drill</td><td>30 mins</td><td>Main Building</td><td class="trend-flat">~</td></tr>
+        <tr><td>Substation Cleaning</td><td>40 mins</td><td>Control Area</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Training: Grid Stability</td><td>90 mins</td><td>Training Hall</td><td class="trend-flat">~</td></tr>
+        <tr><td>Energy Audit</td><td>60 mins</td><td>Office Block</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Switchgear Maintenance</td><td>75 mins</td><td>Zone 5</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Load Management Session</td><td>50 mins</td><td>Virtual</td><td class="trend-flat">~</td></tr>
+        <tr><td>Monthly Review Meeting</td><td>60 mins</td><td>Conference Room</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Protection Coordination</td><td>45 mins</td><td>Relay Room</td><td class="trend-down">⬇</td></tr>
+        <tr><td>CT/PT Calibration</td><td>55 mins</td><td>Panel 6</td><td class="trend-up">⬆</td></tr>
+        <tr><td>DG Set Testing</td><td>30 mins</td><td>Emergency Backup</td><td class="trend-flat">~</td></tr>
+        <tr><td>Ground Resistance Check</td><td>40 mins</td><td>Earthing Pit</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Transmission Loss Review</td><td>35 mins</td><td>Control Center</td><td class="trend-down">⬇</td></tr>
+        <tr><td>System Redundancy Test</td><td>70 mins</td><td>Remote Control</td><td class="trend-flat">~</td></tr>
+        <tr><td>Cybersecurity Audit</td><td>50 mins</td><td>IT Department</td><td class="trend-up">⬆</td></tr>
+        <tr><td>ERP Software Update</td><td>30 mins</td><td>Server Room</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Substation Familiarization</td><td>60 mins</td><td>New Staff</td><td class="trend-up">⬆</td></tr>
+        <tr><td>GIS Mapping Review</td><td>50 mins</td><td>Survey Division</td><td class="trend-flat">~</td></tr>
+        <tr><td>Grid Synchronization</td><td>90 mins</td><td>North-East Line</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Asset Verification</td><td>70 mins</td><td>Annual Check</td><td class="trend-flat">~</td></tr>
+        <tr><td>Inventory Audit</td><td>45 mins</td><td>Warehouse</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Telecom Link Test</td><td>60 mins</td><td>POWERTEL Network</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Smart Meter Demo</td><td>30 mins</td><td>Demo Room</td><td class="trend-flat">~</td></tr>
+        <tr><td>Outage Planning</td><td>55 mins</td><td>Zone 4</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Voltage Regulation</td><td>40 mins</td><td>Feeder Panel</td><td class="trend-flat">~</td></tr>
+        <tr><td>Live Line Training</td><td>120 mins</td><td>Workshop</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Internal IT Workshop</td><td>50 mins</td><td>Internal Tools</td><td class="trend-flat">~</td></tr>
+        <tr><td>Hardware Repair</td><td>35 mins</td><td>Server Rack</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Load Forecast Review</td><td>45 mins</td><td>Planning Room</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Power Flow Simulation</td><td>60 mins</td><td>R&D Lab</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Blackout Recovery Drill</td><td>90 mins</td><td>Control Room</td><td class="trend-up">⬆</td></tr>
+        <tr><td>RTU Configuration</td><td>40 mins</td><td>Substation Device</td><td class="trend-flat">~</td></tr>
+        <tr><td>Voltage Sag Analysis</td><td>30 mins</td><td>Data Logger</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Switching Procedure Review</td><td>50 mins</td><td>Safety Checklist</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Contractor Briefing</td><td>45 mins</td><td>New Tender</td><td class="trend-flat">~</td></tr>
+        <tr><td>ISO Audit Prep</td><td>60 mins</td><td>Compliance</td><td class="trend-down">⬇</td></tr>
+        <tr><td>Control Panel Labeling</td><td>30 mins</td><td>New Layout</td><td class="trend-up">⬆</td></tr>
+        <tr><td>Safety Gear Check</td><td>25 mins</td><td>PPE Stock</td><td class="trend-up">⬆</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
